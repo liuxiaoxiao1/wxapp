@@ -1,0 +1,9 @@
+<!-- 这是footer组件  -->
+<template name='footer1'>
+ <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+</template>
+
+<template name='footer2'>
+这是底部内容2
+</template>

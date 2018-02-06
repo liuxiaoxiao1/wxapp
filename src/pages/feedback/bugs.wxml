@@ -1,0 +1,35 @@
+<!--src/pages/bugs/bugs.wxml-->
+
+<view class='common-content-container bug-list-region'>
+  <view class='btn-container'>
+    <button type="primary" size="{{buttonSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="typeAction" hover-class="other-button-hover" data-value='0'> 主动反馈 </button>
+    <button type="primary" size="{{buttonSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="typeAction" hover-class="other-button-hover" data-value='1'> 放弃反馈 </button>
+    <button type="primary" size="{{buttonSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="typeAction" hover-class="other-button-hover" data-value='3'> 系统自提 </button>
+  </view>
+  <view class='head-container'>
+    <text class='head-index'>编号</text>
+    <text class='head-nickname'>昵称</text>
+    <text class='head-content'>描述</text>
+  </view>
+  <scroll-view class="bugs-list-container" scroll-y scroll-with-animation="true" bindscrolltoupper="toTop" bindscrolltolower="toBottom" bindscroll="scroll">
+
+    <view class="bug-item-container" wx:for="{{items}}" wx:key="id" wx:for-index="id" wx:for-item="item">
+      <view class='bug-item'>
+        <view class='head-content'>{{item.content}}</view>
+        <view class='head-nickname small-txt'>
+        昵称：{{item.userNickname}}
+        <text class="action-txt" bindtap="setClipboardData" hover-class="other-button-hover" data-userId="{{item.userId}}">复制个人中心地址 </text>
+        </view>
+        
+        
+        <view class='head-platform small-txt'>系统类型：{{item.platform || '--'}}</view>
+        <view class='small-txt'>系统版本：{{item.equipmentSysVersion || '--'}}</view>
+        <view class='head-equipmentSysVersion small-txt'>设备版本：{{item.equipment || '--'}}</view>
+        <view class='small-txt'>应用版本：{{item.vsersion}}</view>
+        <view class='head-network small-txt'>网络：{{item.network || '--'}}</view>
+        <view class='head-cratetime small-txt'>{{item.createTime}}</view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,7 @@
+
+<view class="index-container">
+   <image  src="{{userInfo.avatar.a1}}" ></image>
+   <view class="nickname">
+      {{userInfo.userName}}
+   </view>
+</view>

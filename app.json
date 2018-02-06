@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "src/pages/myIndex/index",
+    "src/pages/login/login",
+    "src/pages/feedback/bugs",
+    "src/pages/firstPage/index",
+    "src/pages/index/index",
+    "src/pages/logs/logs",
+    "src/pages/scrollView/scroll",
+    "src/pages/feedbackByUser/index",
+    "src/pages/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#663399",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "500px",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "src/pages/feedback/bugs",
+        "text": "汇总"
+      },
+      {
+        "pagePath": "src/pages/feedbackByUser/index",
+        "text": "查询"
+      },
+      {
+        "pagePath": "src/pages/user/user",
+        "text": "我的"
+      }
+    ],
+    "color": "#71767a",
+    "selectedColor": "#e41d1d",
+    "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "borderStyle": "#d7d7d7"
+  },
+  "debug": true
+}
