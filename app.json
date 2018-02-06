@@ -8,7 +8,8 @@
     "src/pages/logs/logs",
     "src/pages/scrollView/scroll",
     "src/pages/feedbackByUser/index",
-    "src/pages/user/user"
+    "src/pages/user/user",
+    "src/pages/map/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
