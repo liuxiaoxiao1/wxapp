@@ -13,6 +13,7 @@ Page({
     userId: '',
     page:0,
     size:20,
+    hasNext: true,
     items:[]
   },
 
@@ -55,16 +56,25 @@ Page({
       success: function (res) {
         console.log(res.data)
         let resData = res.data;
-        resData.data.map((item, index)=> {
-          resData.data[index].createTime = util.formatTimeByFormat(item.createTime, 'Y/M/D h:m');
-          resData.data[index].content = resData.data[index].content.replace(/access_token=(.){10}/, 'access_token=**********')
-        })
+        if(resData.data.length) {
+          resData.data.map((item, index) => {
+            resData.data[index].createTime = util.formatTimeByFormat(item.createTime, 'Y/M/D h:m');
+            resData.data[index].content = resData.data[index].content.replace(/access_token=(.){10}/, 'access_token=**********')
+          })
+
+          me.setData(
+            {
+              items: [...me.data.items, ...resData.data]
+            }
+          )
+        }else {
+          me.setData(
+            {
+              hasNext: false
+            }
+          )
+        }
         
-        me.setData(
-          {
-            items: [...me.data.items, ...resData.data]
-          }
-        )
         console.log(me.data.items);
       }
     })

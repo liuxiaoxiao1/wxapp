@@ -11,6 +11,7 @@ Page({
     userId: '2b7a049f642b9b8d9b115e0ab59ec4284',
     page: 0,
     size: 20,
+    hasNext: true,
     items: []
   },
 
@@ -25,6 +26,9 @@ Page({
    */
   _getLogList: function () {
     var me = this;
+    if(!me.data.hasNext) {
+      return '';
+    }
     wx.request({
       url: 'https://500px.me/back/feedback/getFeedback', //仅为示例，并非真实的接口地址
       data: {
@@ -39,14 +43,22 @@ Page({
       success: function (res) {
         console.log(res.data)
         let resData = res.data;
-        resData.data.map((item, index) => {
-          resData.data[index].createTime = util.formatTimeByFormat(item.createTime, 'Y/M/D h:m');
-        })
-        me.setData(
-          {
-            items: [...me.data.items, ...resData.data]
-          }
-        )
+        if (resData.data.length) {
+          resData.data.map((item, index) => {
+            resData.data[index].createTime = util.formatTimeByFormat(item.createTime, 'Y/M/D h:m');
+          })
+          me.setData(
+            {
+              items: [...me.data.items, ...resData.data],
+              hasNext: true
+            }
+          )
+        }else {
+          me.setData({
+            hasNext: false
+          })
+        }
+        
         console.log(me.data.items);
       }
     })
@@ -124,6 +136,18 @@ Page({
   },
 
   /**
+   * 重置数据
+   */
+  _resetData: function () {
+    this.setData({
+      hasNext: true,
+      page: 0,
+      items: []
+    })
+  },
+
+
+  /**
    * 按钮点击事件
    */
   queryAction: function (event) {
@@ -134,6 +158,7 @@ Page({
     //   page: 0,
     //   items: []
     // })
+    this._resetData();
     this._getLogList();
 
   },
