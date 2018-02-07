@@ -59,7 +59,7 @@ Page({
         if(resData.data.length) {
           resData.data.map((item, index) => {
             resData.data[index].createTime = util.formatTimeByFormat(item.createTime, 'Y/M/D h:m');
-            resData.data[index].content = resData.data[index].content.replace(/access_token=(.){10}/, 'access_token=**********')
+            resData.data[index].content = resData.data[index].content.replace(/access_token=(.){10}/g, 'access_token=**********')
           })
 
           me.setData(
